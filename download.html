@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>下载龙高报 APP · 龙高报</title>
+<meta name="description" content="龙高报 Android 版安装包下载：黑龙江考生专属高考志愿填报助手，支持离线查看一分一段表与投档数据。当前版本 v1.2。">
+<meta name="theme-color" content="#2b62f0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232b62f0'/><text x='50' y='72' font-size='58' font-weight='bold' text-anchor='middle' fill='white' font-family='sans-serif'>龙</text></svg>">
+<style>
+:root{
+  --bg:#f4f6fa; --surface:#fff; --ink:#1f2430; --ink-2:#474e5e; --ink-3:#7c8496;
+  --line:#eaedf3; --line-strong:#dadfe9;
+  --brand:#2b62f0; --brand-dark:#1d4fd6; --brand-soft:#ecf2ff;
+  --gold:#ff8b1f; --gold-soft:#fff4e6; --green:#0f9d75; --green-soft:#e8f7f2;
+  --radius:16px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:15px;line-height:1.65;padding-bottom:40px;
+}
+a{color:var(--brand);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+
+/* 微信提示条 */
+.wxbar{
+  display:none;background:#1f2430;color:#fff;font-size:13px;line-height:1.5;
+  padding:10px 16px;text-align:center;position:sticky;top:0;z-index:50;
+}
+.wxbar.show{display:block}
+.wxbar b{color:#ffd479}
+
+/* 顶栏 */
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.top-in{max-width:820px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.top-mark{
+  width:30px;height:30px;border-radius:9px;background:linear-gradient(145deg,#3f7bff,#1f52e8);
+  color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:17px
+}
+.top-name{font-weight:700;letter-spacing:.3px}
+.top-name em{font-style:normal;color:var(--ink-3);font-weight:500;font-size:12px;margin-left:2px}
+.top-back{margin-left:auto;font-size:13px;color:var(--ink-3)}
+
+/* 卡片 */
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;margin-top:16px;box-shadow:0 1px 2px rgba(31,36,48,.03)
+}
+.card h2{
+  margin:0 0 14px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px
+}
+.card h2::before{
+  content:"";width:3px;height:14px;border-radius:2px;background:var(--brand);display:block
+}
+
+/* 主视觉 */
+.hero{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.app-icon{
+  width:72px;height:72px;border-radius:20px;flex:none;
+  background:linear-gradient(145deg,#3f7bff,#1f52e8);
+  color:#fff;font-size:40px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 16px rgba(43,98,240,.25)
+}
+.hero-main{flex:1;min-width:220px}
+.hero h1{margin:0;font-size:22px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ver{
+  font-size:11px;font-weight:600;color:var(--brand);background:var(--brand-soft);
+  padding:2px 8px;border-radius:20px;letter-spacing:.3px
+}
+.hero .sub{margin:4px 0 10px;color:var(--ink-3);font-size:13px}
+.meta{list-style:none;display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px;padding:0}
+.meta li{
+  font-size:12px;color:var(--ink-2);background:#f4f6fa;border:1px solid var(--line);
+  padding:2px 9px;border-radius:20px
+}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:46px;padding:0 24px;border-radius:12px;font-size:15px;font-weight:600;
+  border:1px solid transparent;cursor:pointer;transition:.15s;white-space:nowrap
+}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:0 4px 12px rgba(43,98,240,.28)}
+.btn-primary:active{background:var(--brand-dark);transform:translateY(1px)}
+.btn-ghost{background:#fff;color:var(--ink-2);border-color:var(--line-strong)}
+.btn-ghost:active{background:#f4f6fa}
+
+/* 二维码 */
+.qr{width:132px;flex:none;text-align:center}
+.qr img{width:132px;height:132px;display:block;border:1px solid var(--line);border-radius:12px;padding:6px;background:#fff}
+.qr span{display:block;font-size:11px;color:var(--ink-3);margin-top:6px;line-height:1.4}
+
+/* 步骤 */
+.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{
+  position:relative;padding:0 0 16px 38px;counter-increment:s;font-size:14px;color:var(--ink-2)
+}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{
+  content:counter(s);position:absolute;left:0;top:1px;
+  width:24px;height:24px;border-radius:50%;background:var(--brand-soft);color:var(--brand);
+  font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center
+}
+.steps li::after{
+  content:"";position:absolute;left:11.5px;top:30px;bottom:6px;width:1px;background:var(--line)
+}
+.steps li:last-child::after{display:none}
+.steps b{color:var(--ink);font-weight:600}
+
+/* 提示框 */
+.tip{
+  background:var(--gold-soft);border:1px solid #ffe0b8;border-left:3px solid var(--gold);
+  border-radius:10px;padding:12px 14px;font-size:13px;color:#7a4a10;line-height:1.6;margin:0
+}
+.tip strong{color:#5c3608}
+.tip-ok{
+  background:var(--green-soft);border-color:#c9ecdf;border-left-color:var(--green);color:#0b6b50
+}
+.tip-ok strong{color:#08513d}
+
+/* 更新日志 */
+.log{margin:0;padding:0;list-style:none;font-size:13.5px}
+.log li{padding:10px 0;border-bottom:1px dashed var(--line);color:var(--ink-2)}
+.log li:last-child{border-bottom:0;padding-bottom:0}
+.log .lv{font-weight:700;color:var(--ink);margin-right:8px}
+.log .date{color:var(--ink-3);font-size:12px;margin-right:8px}
+.log ul{margin:4px 0 0;padding-left:18px}
+.log ul li{border:0;padding:1px 0;color:var(--ink-3);font-size:13px}
+
+/* 校验 */
+.kv{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+code{
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;
+  background:#f4f6fa;border:1px solid var(--line);border-radius:6px;padding:3px 7px;
+  word-break:break-all;color:var(--ink)
+}
+.copy{
+  border:1px solid var(--line-strong);background:#fff;color:var(--ink-3);
+  font-size:12px;height:26px;padding:0 10px;border-radius:6px;cursor:pointer
+}
+.copy:active{background:#f4f6fa}
+
+/* 页脚 */
+.foot{
+  max-width:820px;margin:24px auto 0;padding:0 16px;
+  font-size:12px;color:var(--ink-3);line-height:1.7
+}
+.foot p{margin:0 0 8px}
+
+@media (max-width:640px){
+  .hero{gap:14px}
+  .app-icon{width:60px;height:60px;border-radius:16px;font-size:32px}
+  .hero h1{font-size:19px}
+  .qr{display:none}
+  .card{padding:18px;border-radius:14px}
+  .actions .btn{flex:1}
+}
+</style>
+</head>
+<body>
+
+<div class="wxbar" id="wxbar">
+  微信内无法直接下载安装包　请点右上角 <b>···</b> 选择「在浏览器打开」
+</div>
+
+<div class="top">
+  <div class="top-in">
+    <span class="top-mark">龙</span>
+    <span class="top-name">龙高报<em>.com</em></span>
+    <a class="top-back" href="/">返回网页版 ›</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="card hero">
+    <div class="app-icon">龙</div>
+    <div class="hero-main">
+      <h1>龙高报 <span class="ver">v1.2</span></h1>
+      <p class="sub">黑龙江考生专属 · 高考志愿填报助手</p>
+      <ul class="meta">
+        <li>Android 7.0 及以上</li>
+        <li>安装包 513 KB</li>
+        <li>2026-11-11 更新</li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn-primary" href="longgaobao-v1.2.apk" download="龙高报-v1.2.apk">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>
+          下载安装包
+        </a>
+        <a class="btn btn-ghost" href="/">打开网页版</a>
+      </div>
+    </div>
+    <div class="qr">
+      <img src="qr.png" alt="扫码打开本页">
+      <span>扫码在手机上打开本页</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>安装步骤</h2>
+    <ol class="steps">
+      <li>点击上方 <b>「下载安装包」</b>，文件约 0.5 MB，秒下完成。文件名是 <b>龙高报-v1.2.apk</b>。</li>
+      <li>在通知栏或「文件管理 → 下载」里点开它。若手机提示 <b>「禁止安装未知来源应用」</b>，按提示进入设置，允许当前这个应用安装（通常是浏览器或文件管理器）。这只是临时授权，装完可以关掉。</li>
+      <li>点 <b>「安装」</b>。华为、小米等品牌可能弹出「风险应用」提醒，选择 <b>「仍要继续安装」</b>。本应用为自签名包，未上架应用商店，所以会触发这类提示。</li>
+      <li>安装完成后打开。首次进入需要联网加载页面（约 2 MB），请等几秒；之后即使断网也能看到内置的离线数据。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>在微信里下载不了？</h2>
+    <p class="tip">
+      微信会拦截 APK 下载。看到「已停止访问该网页」或点击无反应时，请点右上角 <strong>「···」→「在浏览器打开」</strong>，再点下载按钮即可。
+      把本页链接直接发给朋友，对方也需要这样操作一次。
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>更新日志</h2>
+    <ul class="log">
+      <li>
+        <span class="lv">v1.2</span><span class="date">2026-11-11</span>
+        <ul>
+          <li>证书校验失败时显示离线提示条，不再静默降级到旧内容</li>
+          <li>移除多余的 http 降级逻辑，统一走 HTTPS</li>
+          <li>从后台返回时自动重新连接在线版</li>
+        </ul>
+      </li>
+      <li>
+        <span class="lv">v1.1</span><span class="date">2026-11-10</span>
+        <ul>
+          <li>增加整站离线包，断网也能查看数据</li>
+        </ul>
+      </li>
+      <li>
+        <span class="lv">v1.0</span><span class="date">2026-11-09</span>
+        <ul>
+          <li>首个公开版本</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>文件校验</h2>
+    <div class="kv" style="margin-bottom:10px">
+      <span>MD5</span>
+      <code id="md5">c34c9f8cc1431e147845bd2a502342f9</code>
+      <button class="copy" type="button" data-copy="c34c9f8cc1431e147845bd2a502342f9">复制</button>
+    </div>
+    <div class="kv">
+      <span>签名指纹</span>
+      <code>SHA-256 ee:08:82:1e:11:39:d0:ae…</code>
+    </div>
+    <p class="tip tip-ok" style="margin-top:14px">
+      升级安装会保留原有登录状态与志愿表，无需先卸载。<strong>如果手机提示「签名不一致」</strong>，说明装过其他来源的旧包，需要先卸载再装。
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>iPhone / iPad 用户</h2>
+    <p class="tip">
+      暂未提供 iOS 版本。可以用 Safari 打开 <strong>www.longgaobao.com</strong>，点底部 <strong>「分享」→「添加到主屏幕」</strong>，
+      之后从桌面图标进入，体验接近原生应用，数据和安卓版、网页版完全同步。
+    </p>
+  </section>
+
+</div>
+
+<div class="foot">
+  <p>本页仅为安装包分发页。龙高报是志愿填报辅助参考工具，不代替各省官方填报系统，不构成任何录取承诺，最终以官方招生计划与院校招生章程为准。</p>
+  <p>数据整理自黑龙江省招生考试院公开发布的投档数据 · © 2026 龙高报 longgaobao.com</p>
+</div>
+
+<script>
+(function(){
+  // 微信/QQ 内置浏览器提示
+  var ua = navigator.userAgent || "";
+  if (/MicroMessenger|QQ\//i.test(ua)) {
+    document.getElementById("wxbar").classList.add("show");
+  }
+  // 复制按钮
+  document.querySelectorAll("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var t = btn.getAttribute("data-copy"), old = btn.textContent;
+      var done = function(){ btn.textContent = "已复制"; setTimeout(function(){ btn.textContent = old; }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(done, done);
+      } else {
+        var ta = document.createElement("textarea");
+        ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch(e) {}
+        document.body.removeChild(ta); done();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
