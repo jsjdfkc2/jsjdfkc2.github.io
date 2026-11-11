@@ -1,0 +1,35 @@
+{
+  "name": "龙高报 · 黑龙江高考志愿填报平台",
+  "short_name": "龙高报",
+  "description": "模拟填报、找大学、查专业、分数线与位次、新高考选科、职业前景，数据来自黑龙江省招生考试院公开投档数据。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait",
+  "background_color": "#f4f6fa",
+  "theme_color": "#2b62f0",
+  "categories": ["education", "reference"],
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "填志愿", "url": "/#/zhineng" },
+    { "name": "找大学", "url": "/#/schools" },
+    { "name": "分数线", "url": "/#/lines" }
+  ]
+}
