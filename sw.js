@@ -5,7 +5,7 @@
    - 跨域请求（CDN SDK 等）：不接管，交给浏览器
    发布新版本时只需改 VERSION。
 */
-var VERSION = 'lgk-2026-11-12-a';
+var VERSION = 'lgk-2026-11-12-d';
 var CORE = [
   '/',
   '/index.html',

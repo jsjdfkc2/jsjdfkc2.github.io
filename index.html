@@ -21,16 +21,16 @@
   --line:#eaedf3;
   --line-strong:#dadfe9;
 
-  --brand:#2b62f0;
-  --brand-dark:#1d4fd6;
-  --brand-deep:#163f9e;
+  --brand:#e8353f;
+  --brand-dark:#c72530;
+  --brand-deep:#8f1620;
   --brand-soft:#ecf2ff;
-  --brand-grad:linear-gradient(145deg,#3f7bff,#1f52e8);
+  --brand-grad:linear-gradient(145deg,#ff5f52,#d31f2e);
   --gold:#ff8b1f;
   --gold-dark:#e6750c;
   --gold-soft:#fff4e6;
   --green:#0f9d75;
-  --blue:#1f6feb;
+  --blue:#e8353f;
 
   --chong:#ff8b1f;
   --chong-soft:#fff4e6;
@@ -55,7 +55,7 @@ body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);font
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
 input,select{font-family:inherit;font-size:inherit;color:inherit}
-::selection{background:#d9e6ff;color:#10308f}
+::selection{background:#fde2e2;color:#8f1620}
 :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
 .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 
@@ -71,7 +71,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .ub-year button{display:inline-flex;align-items:center;gap:4px;border:1px solid transparent;background:none;color:var(--ink-2);
   font:inherit;font-size:12px;font-weight:600;padding:2px 9px;border-radius:20px;cursor:pointer;transition:.16s}
 .ub-year button:hover{background:#e9e9ec;color:var(--ink)}
-.ub-year button.on{background:var(--brand);color:#fff;box-shadow:0 1px 4px rgba(43,98,240,.30)}
+.ub-year button.on{background:var(--brand);color:#fff;box-shadow:0 1px 4px rgba(232,53,63,.30)}
 .ub-year button.on i{background:rgba(255,255,255,.24)}
 .ub-year button i{font-style:normal;font-size:10px;line-height:1;padding:1px 4px;border-radius:4px;background:#eef0f3;color:inherit;font-weight:600}
 /* 历年涨跌角标 */
@@ -89,7 +89,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .brand-mark{
   width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;
   font-size:23px;font-weight:800;background:var(--brand-grad);
-  box-shadow:0 8px 18px -8px rgba(31,82,216,.55),inset 0 1px 0 rgba(255,255,255,.35);
+  box-shadow:0 8px 18px -8px rgba(207,37,48,.55),inset 0 1px 0 rgba(255,255,255,.35);
 }
 .brand-text{display:flex;flex-direction:column;line-height:1.2}
 .brand-text strong{font-size:21px;letter-spacing:.2px;font-weight:800}
@@ -117,7 +117,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .user-area{display:flex;align-items:center;gap:8px}
 .user-chip{display:flex;align-items:center;gap:9px;padding:4px 6px;border-radius:999px;transition:.15s;cursor:pointer}
 .user-chip:hover{background:var(--bg-soft)}
-.ua-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#8fb4ff,#2b62f0);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;flex-shrink:0}
+.ua-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#ffab9f,#e8353f);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;flex-shrink:0}
 .ua-name{font-size:13.5px;font-weight:600;max-width:96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ua-tag{font-size:10px;font-weight:800;padding:2px 6px;border-radius:6px;background:linear-gradient(145deg,#ffc94d,#f39c0d);color:#5d3a00;letter-spacing:.5px}
 .ua-tag.off{background:#f0f0f2;color:var(--ink-3);font-weight:600}
@@ -125,23 +125,44 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .ua-logout:hover{color:var(--brand);background:var(--brand-soft)}
 .btn-login{height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--brand);background:#fff;color:var(--brand);font-size:13.5px;font-weight:700}
 .btn-login:hover{background:var(--brand-soft)}
-.btn-login.solid{background:var(--brand-grad);color:#fff;border-color:transparent;box-shadow:0 8px 16px -8px rgba(31,82,216,.55)}
+.btn-login.solid{background:var(--brand-grad);color:#fff;border-color:transparent;box-shadow:0 8px 16px -8px rgba(207,37,48,.55)}
 .btn-login.solid:hover{filter:brightness(1.06)}
 
-/* ---------- 红色主导航 ---------- */
-.main-nav{background:linear-gradient(90deg,#2f6bff,#1c4fd6)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:0 16px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+/* ---------- 红色主导航（优志愿式下拉） ---------- */
+.main-nav{background:linear-gradient(90deg,#e8453f,#c72530);position:relative;z-index:80}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 16px;display:flex;gap:0;overflow:visible;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.main-nav a{
+.main-nav .nav-inner > a, .main-nav .nv-item > a{
   position:relative;display:inline-flex;align-items:center;gap:5px;padding:0 18px;height:46px;
-  color:rgba(255,255,255,.92);font-size:14.5px;font-weight:600;transition:.16s;white-space:nowrap;
+  color:rgba(255,255,255,.92);font-size:14.5px;font-weight:600;transition:.16s;white-space:nowrap;cursor:pointer;
 }
-.main-nav a:hover{background:rgba(255,255,255,.14)}
+.main-nav .nav-inner > a:hover, .main-nav .nv-item:hover > a{background:rgba(255,255,255,.14)}
 .main-nav a.active{background:rgba(0,0,0,.22);color:#fff}
-.main-nav a.active::after{content:"";position:absolute;left:18px;right:18px;bottom:5px;height:3px;border-radius:2px;background:#fff}
+.main-nav .nav-inner > a.active::after, .main-nav .nv-item > a.active::after{content:"";position:absolute;left:18px;right:18px;bottom:5px;height:3px;border-radius:2px;background:#fff}
+.nv-item{position:relative;display:flex}
+.nav-caret{width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px solid rgba(255,255,255,.85);margin-top:2px;transition:.16s}
+.nv-item:hover .nav-caret{transform:rotate(180deg)}
+.nav-drop{
+  position:absolute;top:100%;left:50%;transform:translate(-50%,6px);min-width:200px;
+  background:#fff;border-radius:0 0 10px 10px;box-shadow:0 16px 38px rgba(60,8,8,.22);
+  padding:8px 0;opacity:0;visibility:hidden;transition:.16s;z-index:99;
+}
+.nv-item:hover .nav-drop,.nv-item:focus-within .nav-drop{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.nav-drop a{display:block;padding:9px 22px;color:#5a3033;font-size:13.5px;font-weight:500;white-space:nowrap;transition:.13s}
+.nav-drop a:hover{background:#fdeeee;color:#e8353f}
+.nav-drop.mega{display:flex;gap:0;padding:14px 10px 12px;min-width:0}
+.mega-col{padding:0 8px;min-width:158px}
+.mega-col + .mega-col{border-left:1px solid #f5e4e4}
+.mega-col h5{margin:2px 12px 7px;font-size:13.5px;color:#c72530;font-weight:800;letter-spacing:3px;display:flex;align-items:center;gap:6px}
+.mega-col h5::before{content:"";width:6px;height:6px;border-radius:2px;background:linear-gradient(145deg,#ff5f52,#d31f2e)}
 .nav-count{
   display:inline-grid;place-items:center;min-width:17px;height:17px;padding:0 4px;margin-left:2px;
   border-radius:999px;background:#fff;color:var(--brand);font-size:10.5px;font-weight:800;
+}
+@media (max-width:900px){
+  .nav-inner{overflow-x:auto}
+  .nav-drop{display:none!important}
+  .nav-caret{display:none}
 }
 
 /* 成绩悬浮条 */
@@ -163,7 +184,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 /* ---------- 首页 Hero ---------- */
 .hero-v2{
   position:relative;margin-top:22px;border-radius:20px;overflow:hidden;
-  background:linear-gradient(118deg,#163f9e 0%,#2b62f0 46%,#5a8bff 100%);
+  background:linear-gradient(118deg,#8f1620 0%,#e8353f 46%,#ff7d70 100%);
   box-shadow:0 30px 60px -30px rgba(201,37,26,.55);
 }
 .hero-v2::before{
@@ -203,7 +224,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .fill-card .sub{margin:0 0 16px;font-size:12.5px;color:var(--ink-3)}
 .seg{display:flex;padding:4px;background:var(--bg-soft);border-radius:11px;gap:4px}
 .seg button{flex:1;height:36px;border:0;border-radius:8px;background:transparent;color:var(--ink-2);font-size:14px;font-weight:600;transition:.16s}
-.seg button[aria-pressed="true"]{background:var(--brand-grad);color:#fff;box-shadow:0 6px 14px -6px rgba(31,82,216,.55)}
+.seg button[aria-pressed="true"]{background:var(--brand-grad);color:#fff;box-shadow:0 6px 14px -6px rgba(207,37,48,.55)}
 .seg.mini button{height:30px;font-size:13px}
 .seg.mini button[aria-pressed="true"]{background:#fff;color:var(--brand-dark);box-shadow:0 2px 8px -2px rgba(20,24,34,.2)}
 
@@ -212,7 +233,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .input-wrap{position:relative}
 .input-wrap input{width:100%;height:44px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;padding:0 44px 0 13px;font-size:18px;font-weight:700;letter-spacing:.4px;transition:.16s}
 .input-wrap input::placeholder{font-size:13.5px;font-weight:400;color:var(--ink-4);letter-spacing:0}
-.input-wrap input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(43,98,240,.14);outline:none}
+.input-wrap input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(232,53,63,.14);outline:none}
 .input-wrap .unit{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-3)}
 .field-hint{margin-top:5px;font-size:11.5px;color:var(--ink-3);display:flex;justify-content:space-between;gap:8px}
 .field-hint b{color:var(--brand-dark)}
@@ -230,8 +251,8 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 /* ---------- 按钮 ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;height:40px;padding:0 18px;border-radius:10px;font-size:14px;font-weight:600;transition:.18s;white-space:nowrap}
 .btn svg{width:16px;height:16px}
-.btn-primary{background:var(--brand-grad);color:#fff;box-shadow:0 10px 22px -12px rgba(31,82,216,.6),inset 0 1px 0 rgba(255,255,255,.25)}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 28px -14px rgba(31,82,216,.6)}
+.btn-primary{background:var(--brand-grad);color:#fff;box-shadow:0 10px 22px -12px rgba(207,37,48,.6),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 16px 28px -14px rgba(207,37,48,.6)}
 .btn-gold{background:linear-gradient(145deg,#ffc94d,#f39c0d);color:#5d3a00;font-weight:800;box-shadow:0 10px 22px -12px rgba(243,156,13,.9),inset 0 1px 0 rgba(255,255,255,.5)}
 .btn-gold:hover{transform:translateY(-1px);filter:brightness(1.04)}
 .btn-ghost{background:#fff;border-color:var(--line-strong);color:var(--ink-2)}
@@ -256,15 +277,15 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .fn-item:hover{background:var(--brand-soft);transform:translateY(-2px)}
 .fn-ico{
   width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;position:relative;
-  background:var(--brand-grad);box-shadow:0 10px 20px -10px rgba(31,82,216,.55),inset 0 1px 0 rgba(255,255,255,.3);
+  background:var(--brand-grad);box-shadow:0 10px 20px -10px rgba(207,37,48,.55),inset 0 1px 0 rgba(255,255,255,.3);
 }
 .fn-ico svg{width:24px;height:24px}
 .fn-item:nth-child(2) .fn-ico{background:linear-gradient(145deg,#ff8f5c,#f4622e);box-shadow:0 10px 20px -10px rgba(244,98,46,.7)}
-.fn-item:nth-child(3) .fn-ico{background:linear-gradient(145deg,#5ca7ff,#2d6fe0);box-shadow:0 10px 20px -10px rgba(45,111,224,.7)}
-.fn-item:nth-child(4) .fn-ico{background:linear-gradient(145deg,#34c08b,#0f9d75);box-shadow:0 10px 20px -10px rgba(15,157,117,.7)}
-.fn-item:nth-child(5) .fn-ico{background:linear-gradient(145deg,#b07df7,#7b4fe0);box-shadow:0 10px 20px -10px rgba(123,79,224,.7)}
+.fn-item:nth-child(3) .fn-ico{background:linear-gradient(145deg,#ff8a7d,#e0483d);box-shadow:0 10px 20px -10px rgba(214,69,60,.7)}
+.fn-item:nth-child(4) .fn-ico{background:linear-gradient(145deg,#ff9d6b,#e8642f);box-shadow:0 10px 20px -10px rgba(232,100,47,.7)}
+.fn-item:nth-child(5) .fn-ico{background:linear-gradient(145deg,#ff5f6d,#d31f3c);box-shadow:0 10px 20px -10px rgba(211,31,60,.7)}
 .fn-item:nth-child(6) .fn-ico{background:linear-gradient(145deg,#ffc94d,#f0950c);box-shadow:0 10px 20px -10px rgba(240,149,12,.7)}
-.fn-item:nth-child(7) .fn-ico{background:linear-gradient(145deg,#54c7e8,#1f9bc9);box-shadow:0 10px 20px -10px rgba(31,155,201,.7)}
+.fn-item:nth-child(7) .fn-ico{background:linear-gradient(145deg,#ff7a70,#cf2f28);box-shadow:0 10px 20px -10px rgba(207,47,40,.7)}
 .fn-item:nth-child(8) .fn-ico{background:linear-gradient(145deg,#f7738f,#e03e63);box-shadow:0 10px 20px -10px rgba(224,62,99,.7)}
 .fn-item span{font-size:13px;font-weight:600;color:var(--ink-2)}
 .fn-vip-tag{
@@ -287,6 +308,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .panel-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
 .panel-hd{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;border-bottom:1px solid var(--line)}
 .panel-hd h3{margin:0;font-size:16px;display:flex;align-items:center;gap:8px}
+.panel-hd h3 svg,.hs-hd h3 svg{width:17px;height:17px;flex-shrink:0;color:var(--brand)}
 .panel-hd h3::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--brand-grad)}
 .panel-hd a{font-size:12.5px;color:var(--ink-3);display:inline-flex;align-items:center;gap:3px}
 .panel-hd a:hover{color:var(--brand)}
@@ -296,7 +318,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .hot-row:hover{background:#f7faff}
 .hot-row:last-child{border-bottom:0}
 .hot-no{width:24px;height:24px;border-radius:7px;background:#f0f0f2;color:var(--ink-3);font-size:12px;font-weight:800;display:grid;place-items:center;flex-shrink:0}
-.hot-no.top1{background:linear-gradient(145deg,#6f9aff,#2b62f0);color:#fff}
+.hot-no.top1{background:linear-gradient(145deg,#ff9088,#e8353f);color:#fff}
 .hot-no.top2{background:linear-gradient(145deg,#ffa04d,#f0780c);color:#fff}
 .hot-no.top3{background:linear-gradient(145deg,#ffc94d,#f39c0d);color:#fff}
 .hot-main{flex:1;min-width:0}
@@ -332,7 +354,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .ov-card .v{font-size:25px;font-weight:800;letter-spacing:-.7px;margin-top:3px;line-height:1.2}
 .ov-card .v small{font-size:12.5px;font-weight:600;color:var(--ink-3);margin-left:3px}
 .ov-card .t{font-size:11.5px;color:var(--ink-3);margin-top:2px}
-.ov-card::after{content:"";position:absolute;right:-24px;top:-24px;width:84px;height:84px;border-radius:50%;background:linear-gradient(140deg,rgba(43,98,240,.08),transparent 70%)}
+.ov-card::after{content:"";position:absolute;right:-24px;top:-24px;width:84px;height:84px;border-radius:50%;background:linear-gradient(140deg,rgba(232,53,63,.08),transparent 70%)}
 
 .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:32px 0 14px}
 .section-head h2{margin:0;font-size:19px;letter-spacing:-.3px}
@@ -397,7 +419,7 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 /* ---------- 徽标 ---------- */
 .badge{display:inline-flex;align-items:center;height:19px;padding:0 6px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:.2px;white-space:nowrap}
 .badge.lv985{background:#fdeee6;color:#c2410c}
-.badge.lv211{background:#eaf1ff;color:#1d4ed8}
+.badge.lv211{background:#fdeeee;color:#c72530}
 .badge.lv1{background:#e8f7f0;color:#0b7a5b}
 .badge.ty{background:#f3f4f7;color:#5a6b82;font-weight:600}
 .badge.ty-warn{background:#fff6e5;color:#a16207}
@@ -421,11 +443,11 @@ input,select{font-family:inherit;font-size:inherit;color:inherit}
 .search{position:relative;flex:1;min-width:230px}
 .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-4)}
 .search input{width:100%;height:41px;border:1px solid var(--line-strong);border-radius:10px;padding:0 14px 0 38px;background:#fff;font-size:13.5px;transition:.16s}
-.search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(43,98,240,.14);outline:none}
+.search input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(232,53,63,.14);outline:none}
 .select{height:41px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;padding:0 32px 0 12px;font-size:13px;font-weight:500;color:var(--ink-2);appearance:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2382868f' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 11px center;cursor:pointer;transition:.16s}
-.select:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 4px rgba(43,98,240,.14)}
+.select:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 4px rgba(232,53,63,.14)}
 .filter-extra{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
 .range{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-3)}
 .range input{width:74px;height:35px;border:1px solid var(--line-strong);border-radius:8px;text-align:center;font-size:13px;font-weight:600;padding:0 6px}
@@ -516,7 +538,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .vitem{display:grid;grid-template-columns:22px 30px 1fr auto auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:10px 13px;transition:.16s}
 .vitem:hover{border-color:#f3b3ac;box-shadow:var(--shadow-sm)}
 .vitem.drag{opacity:.4}
-.vitem.over{border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,98,240,.18)}
+.vitem.over{border-color:var(--brand);box-shadow:0 0 0 3px rgba(232,53,63,.18)}
 .vitem .handle{cursor:grab;color:var(--ink-4);display:grid;place-items:center}
 .vitem .handle svg{width:14px;height:14px}
 .vitem .order{width:26px;height:26px;border-radius:8px;background:var(--bg-soft);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--ink-2)}
@@ -600,7 +622,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .auth-field{margin-bottom:13px}
 .auth-field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
 .auth-field input{width:100%;height:44px;border:1px solid var(--line-strong);border-radius:10px;padding:0 14px;font-size:15px;transition:.16s}
-.auth-field input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(43,98,240,.14);outline:none}
+.auth-field input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(232,53,63,.14);outline:none}
 .auth-code-row{display:flex;gap:9px}
 .auth-code-row input{flex:1}
 .auth-code-row .code-btn{height:44px;padding:0 14px;border-radius:10px;border:1px solid var(--brand);background:#fff;color:var(--brand);font-size:13px;font-weight:600;white-space:nowrap}
@@ -617,7 +639,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .am:hover{background:var(--bg-soft)}
 .am[aria-pressed="true"]{border-color:#0aad07;background:#f3fdf3;color:#0a8f07;box-shadow:0 0 0 3px rgba(10,173,7,.1)}
 .am[aria-pressed="true"] .am-ic{color:#09bb07}
-.am[data-m="phone"][aria-pressed="true"]{border-color:var(--brand);background:#f7faff;color:var(--brand-dark);box-shadow:0 0 0 3px rgba(43,98,240,.14)}
+.am[data-m="phone"][aria-pressed="true"]{border-color:var(--brand);background:#f7faff;color:var(--brand-dark);box-shadow:0 0 0 3px rgba(232,53,63,.14)}
 .am[data-m="phone"][aria-pressed="true"] .am-ic{color:var(--brand)}
 
 /* --- 微信扫码登录 --- */
@@ -716,7 +738,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
 .pay-m{display:flex;align-items:center;gap:10px;padding:13px 15px;border:1.5px solid var(--line-strong);border-radius:12px;background:#fff;transition:.15s;text-align:left}
 .pay-m:hover{border-color:#f3b3ac}
-.pay-m.on{border-color:var(--brand);background:#f7faff;box-shadow:0 0 0 3px rgba(43,98,240,.14)}
+.pay-m.on{border-color:var(--brand);background:#f7faff;box-shadow:0 0 0 3px rgba(232,53,63,.14)}
 .pay-ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;flex-shrink:0}
 .pay-ico svg{width:19px;height:19px}
 .pay-ico.wx{background:#09bb07}
@@ -921,7 +943,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .mj-cls,.mj-deg,.mj-yrs{color:var(--ink-3);font-size:12.5px}
 .mj-code{color:var(--ink-4);font-size:12px}
 .tk{font-style:normal;font-size:10px;line-height:1;padding:2px 4px;border-radius:4px;font-weight:700;flex-shrink:0}
-.tk.t,.tk.tk{background:#eef4ff;color:#1d4ed8}
+.tk.t,.tk.tk{background:#fdeeee;color:#c72530}
 .tk.k{background:#fdf1e3;color:#a15c0a}
 .tk.b{background:#f1f2f4;color:var(--ink-3)}
 .mj-has{font-style:normal;font-size:10px;padding:2px 5px;border-radius:4px;background:#fdecea;color:var(--brand);font-weight:700;flex-shrink:0}
@@ -1027,7 +1049,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .zk-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
 .zk-tags i{font-style:normal;font-size:10.5px;line-height:1;padding:3px 6px;border-radius:5px;background:#f4f5f7;color:var(--ink-3);font-weight:600}
 .zk-tags .zk-ty{background:var(--brand-soft);color:var(--brand-dark)}
-.zk-tags .zk-badge{background:#eef4ff;color:#3f5f8f}
+.zk-tags .zk-badge{background:#fdeeee;color:#3f5f8f}
 .zk-smeta{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink-4);white-space:nowrap}
 .zk-smeta em{font-style:normal}
 .zk-d{font-style:normal;font-size:11.5px;font-weight:600;color:var(--ink-4);background:#f4f5f7;border-radius:5px;padding:2px 6px}
@@ -1129,7 +1151,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .xk-btns button{flex:1;height:44px;border-radius:10px;border:1.5px solid var(--line-strong);background:#fff;
   font:inherit;font-size:14.5px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:.15s}
 .xk-btns button:hover{border-color:var(--brand);color:var(--brand)}
-.xk-btns button.on{background:var(--brand-grad);border-color:transparent;color:#fff;box-shadow:0 4px 12px rgba(43,98,240,.3)}
+.xk-btns button.on{background:var(--brand-grad);border-color:transparent;color:#fff;box-shadow:0 4px 12px rgba(232,53,63,.3)}
 .xk-result{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px}
 .xk-result.empty-r{display:flex;align-items:center;gap:10px;color:var(--ink-3);font-size:13px}
 .xk-result.empty-r svg{width:18px;height:18px;color:var(--ink-4);flex-shrink:0}
@@ -1152,7 +1174,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .xk-combo{display:flex;flex-direction:column;gap:7px;background:#fff;border:1.5px solid var(--line);border-radius:12px;
   padding:12px 13px;font:inherit;text-align:left;cursor:pointer;transition:.15s}
 .xk-combo:hover{border-color:#f3b3ac;box-shadow:var(--shadow-sm);transform:translateY(-1px)}
-.xk-combo.on{border-color:var(--brand);background:#f6f9ff;box-shadow:0 0 0 3px rgba(43,98,240,.14)}
+.xk-combo.on{border-color:var(--brand);background:#f6f9ff;box-shadow:0 0 0 3px rgba(232,53,63,.14)}
 .xk-ch{display:flex;align-items:center;gap:4px;font-size:13.5px}
 .xk-ch b{color:var(--ink)}
 .xk-ch i{font-style:normal;color:var(--ink-4)}
@@ -1180,7 +1202,7 @@ table.tb tbody tr:hover{background:#f7faff}
 .subnav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 20px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
 .subnav a{padding:8px 16px;border-radius:var(--r-sm);font-size:13.5px;font-weight:600;color:var(--ink-2);transition:.15s}
 .subnav a:hover{color:var(--brand);background:var(--brand-soft)}
-.subnav a.on{background:var(--brand-grad);color:#fff;box-shadow:0 4px 10px -4px rgba(31,82,216,.5)}
+.subnav a.on{background:var(--brand-grad);color:#fff;box-shadow:0 4px 10px -4px rgba(207,37,48,.5)}
 .page-sub{margin:4px 0 18px}
 .page-sub h2{margin:0 0 6px;font-size:20px}
 .page-sub p{margin:0;color:var(--ink-3);font-size:13.5px}
@@ -1201,11 +1223,11 @@ table.tb tbody tr:hover{background:#f7faff}
 .quick-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:16px}
 .qg-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:9px;padding:20px 8px 16px;transition:.15s;border:none;background:none}
 .qg-item:hover{background:var(--brand-soft)}
-.qg-item .qg-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--brand-grad);box-shadow:0 6px 14px -6px rgba(31,82,216,.55)}
-.qg-item:nth-child(2n) .qg-ico{background:linear-gradient(145deg,#38b6ff,#1d7fe0)}
-.qg-item:nth-child(3n) .qg-ico{background:linear-gradient(145deg,#ffb84d,#f08a00)}
-.qg-item:nth-child(4n) .qg-ico{background:linear-gradient(145deg,#3ddc97,#0e9e6b)}
-.qg-item:nth-child(5n) .qg-ico{background:linear-gradient(145deg,#a68bff,#6d4df0)}
+.qg-item .qg-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--brand-grad);box-shadow:0 6px 14px -6px rgba(207,37,48,.55)}
+.qg-item:nth-child(2n) .qg-ico{background:linear-gradient(145deg,#ff5f52,#d31f2e)}
+.qg-item:nth-child(3n) .qg-ico{background:linear-gradient(145deg,#ff8f5c,#f4622e)}
+.qg-item:nth-child(4n) .qg-ico{background:linear-gradient(145deg,#ff7a70,#cf2f28)}
+.qg-item:nth-child(5n) .qg-ico{background:linear-gradient(145deg,#ff9d6b,#e8642f)}
 .qg-item b{font-size:14px;font-weight:700}
 .qg-item i{font-style:normal;font-size:11px;color:var(--ink-4)}
 .qg-badge{position:absolute;top:9px;right:calc(50% - 42px);padding:1px 7px;border-radius:999px;font-size:10px;font-weight:800;color:#fff;background:var(--chong);box-shadow:0 2px 6px rgba(240,138,0,.4)}
@@ -1243,7 +1265,7 @@ table.tb tbody tr:hover{background:#f7faff}
 /* ---------- 招生政策 ---------- */
 .pol-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
 .pol-step{position:relative;padding:18px 18px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm)}
-.pol-step .ps-no{position:absolute;top:-12px;left:16px;width:26px;height:26px;border-radius:8px;background:var(--brand-grad);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 4px 10px -4px rgba(31,82,216,.6)}
+.pol-step .ps-no{position:absolute;top:-12px;left:16px;width:26px;height:26px;border-radius:8px;background:var(--brand-grad);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 4px 10px -4px rgba(207,37,48,.6)}
 .pol-step h4{margin:6px 0 6px;font-size:14.5px}
 .pol-step p{margin:0;font-size:12.5px;color:var(--ink-3);line-height:1.7}
 
@@ -1306,7 +1328,7 @@ button.mj-chip:disabled{cursor:default;opacity:.55}
 .qz-opts{display:grid;gap:10px}
 .qz-opt{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1.5px solid var(--line-strong);border-radius:var(--r-md);background:var(--surface);font-size:14px;transition:.14s;text-align:left}
 .qz-opt:hover{border-color:var(--brand);background:var(--brand-soft)}
-.qz-opt.on{border-color:var(--brand);background:var(--brand-soft);box-shadow:0 0 0 3px rgba(43,98,240,.12)}
+.qz-opt.on{border-color:var(--brand);background:var(--brand-soft);box-shadow:0 0 0 3px rgba(232,53,63,.12)}
 .qz-opt i{font-style:normal;width:24px;height:24px;border-radius:7px;background:var(--bg-soft);color:var(--ink-3);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
 .qz-opt.on i{background:var(--brand);color:#fff}
 .qz-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
@@ -1343,7 +1365,7 @@ button.mj-chip:disabled{cursor:default;opacity:.55}
 /* ---------- 测评中心 ---------- */
 .ce-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}
 .ce-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px;transition:.16s}
-.ce-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:#c6d6ff}
+.ce-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:#f5c6c6}
 .ce-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;background:var(--brand-grad)}
 .ce-ico svg{width:22px;height:22px}
 .ce-ico.alt{background:linear-gradient(145deg,#12b981,#0a7d5c)}
@@ -1483,7 +1505,7 @@ button.mj-chip:disabled{cursor:default;opacity:.55}
 .ls-grid-sm{grid-template-columns:1fr}
 .ls-card{display:flex;gap:12px;padding:11px 12px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-md);cursor:pointer;transition:.15s}
 .ls-card:hover{border-color:var(--brand);background:var(--brand-soft)}
-.ls-cover{position:relative;width:92px;height:62px;border-radius:8px;background:linear-gradient(135deg,#163f9e,#2b62f0 60%,#5a8bff);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.ls-cover{position:relative;width:92px;height:62px;border-radius:8px;background:linear-gradient(135deg,#8f1620,#e8353f 60%,#ff7d70);color:#fff;display:grid;place-items:center;flex-shrink:0}
 .ls-cover svg{width:22px;height:22px;opacity:.95}
 .ls-cover span{position:absolute;right:5px;bottom:4px;font-size:10px;background:rgba(0,0,0,.45);padding:0 5px;border-radius:4px}
 .ls-bd{min-width:0;flex:1}
@@ -1516,12 +1538,58 @@ button.mj-chip:disabled{cursor:default;opacity:.55}
 }
 .utility-bar .nav-count{background:var(--brand);color:#fff}
 
+/* ===== 优志愿版面对齐（hero 轮播 / 宫格 / 资讯 / 侧栏） ===== */
+.home-hero{display:grid;grid-template-columns:1fr 352px;gap:20px;margin-bottom:16px;align-items:stretch}
+.hh-banner{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:352px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+.hh-slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;padding:42px 48px;color:#fff;opacity:0;animation:hhCycle 21s infinite}
+.hh-slide:nth-child(2){animation-delay:7s}
+.hh-slide:nth-child(3){animation-delay:14s}
+@keyframes hhCycle{0%,27%{opacity:1}33.4%,100%{opacity:0}}
+.hh-s1{background:linear-gradient(118deg,#8f1620 0%,#e8353f 55%,#ff7d70 100%)}
+.hh-s2{background:linear-gradient(118deg,#4a0d13 0%,#c72530 60%,#e8642f 100%)}
+.hh-s3{background:linear-gradient(118deg,#2b0a0e 0%,#8f1620 55%,#d31f2e 100%)}
+.hh-slide::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;border:30px solid rgba(255,255,255,.09);pointer-events:none}
+.hh-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);font-size:12.5px;font-weight:600;letter-spacing:.5px}
+.hh-slide h2{margin:0;font-size:33px;line-height:1.28;letter-spacing:-.5px}
+.hh-slide h2 em{font-style:normal;color:#ffd76e}
+.hh-slide p{margin:0;font-size:14px;line-height:1.7;color:rgba(255,255,255,.92);max-width:560px}
+.hh-slide .btn{margin-top:6px}
+.hh-btn{background:#fff;color:#e8353f;border-color:#fff}
+.hh-btn:hover{filter:brightness(.96);color:#c72530}
+.fc-prov{margin-left:auto;font-size:13px;font-weight:600;color:var(--ink-3)}
+.hs-sub-hd{border-top:1px solid var(--line)}
+.hs-compact{padding:6px 22px}
+.hs-compact .hs-row{padding:8px 0}
+.mp-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;padding:10px 22px}
+.news-list-full{padding:10px 22px}
+.live-entry{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;margin-right:14px;border-radius:10px;border:1.5px solid var(--brand);color:var(--brand);font-size:13.5px;font-weight:700;white-space:nowrap;text-decoration:none;flex-shrink:0}
+.live-entry:hover{background:var(--brand-soft)}
+.live-entry svg{width:19px;height:19px}
+.header-greet{font-size:13px;color:var(--ink-3);font-weight:600;white-space:nowrap;margin-right:6px}
+.side-widgets{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:8px}
+.sw-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:52px;height:52px;border-radius:12px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);font-size:11px;font-weight:700;color:var(--ink-2);text-decoration:none;transition:.15s;cursor:pointer}
+.sw-btn:hover{color:var(--brand);border-color:var(--brand)}
+.sw-btn svg{width:20px;height:20px}
+.sw-top{background:linear-gradient(145deg,#ff5f52,#d31f2e);border:none;color:#fff}
+.sw-top:hover{color:#fff;border-color:transparent;filter:brightness(1.06)}
+.quick-grid .qg-ico{background:var(--brand-grad)!important;box-shadow:0 6px 14px -6px rgba(207,37,48,.55)!important}
+@media (max-width:1000px){
+ .home-hero{grid-template-columns:1fr}
+ .hh-banner{min-height:230px}
+ .hh-slide{padding:26px 28px}
+ .hh-slide h2{font-size:24px}
+ .side-widgets{display:none}
+ .header-greet{display:none}
+ .mp-grid{grid-template-columns:1fr}
+ .live-entry{display:none}
+}
+
 </style>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232b62f0'/><text x='50' y='72' font-size='58' font-weight='bold' text-anchor='middle' fill='white' font-family='sans-serif'>龙</text></svg>">
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#2b62f0">
+<meta name="theme-color" content="#e8353f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -1536,7 +1604,7 @@ button.mj-chip:disabled{cursor:default;opacity:.55}
     <span class="ub-note">数据来源：黑龙江省招生考试院公开投档数据</span>
     <span class="ub-year" id="yearSwitch"></span>
     <span class="ub-links">
-      <a href="#/list">志愿表<span class="nav-count" id="navCount" hidden>0</span></a><a href="#/schools">找大学</a><a href="#/majors">查专业</a><a href="#/lines">分数线</a><a href="#/zk">高职招生</a><a href="#/guide">填报指南</a><a href="#/vip">会员服务</a><a href="https://www.lzk.hl.cn" target="_blank" rel="noopener">省招生考试院</a>
+      <a href="#/list">志愿表<span class="nav-count" id="navCount" hidden>0</span></a><a href="#/guide">帮助中心</a><a href="download.html" target="_blank" rel="noopener">手机APP</a><a href="#/vip">会员服务</a><a href="https://www.lzk.hl.cn" target="_blank" rel="noopener">省招生考试院</a>
     </span>
   </div>
 </div>
@@ -1551,13 +1619,15 @@ button.mj-chip:disabled{cursor:default;opacity:.55}
         <small>专属黑龙江学子的高考志愿填报平台</small>
       </span>
     </a>
-    <div class="header-search">
+    <a class="live-entry" href="#/live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="5" width="14" height="12" rx="2.5"/><path d="M16.5 10.5 21 7.5v9l-4.5-3z"/></svg>高招云直播</a>
+        <div class="header-search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       <input id="headerSearch" type="search" placeholder="搜文章 / 找大学 / 查专业 / 搜分数线" aria-label="全站搜索">
       <button class="hs-btn" type="button" data-act="headerSearch">搜索</button>
     </div>
     <div class="header-right">
-      <button class="vip-open" type="button" data-act="goto" data-arg="vip">
+        <span class="header-greet">祝广大考生金榜题名</span>
+        <button class="vip-open" type="button" data-act="goto" data-arg="vip">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>
         开通VIP
       </button>
@@ -1568,16 +1638,72 @@ button.mj-chip:disabled{cursor:default;opacity:.55}
   <nav class="main-nav" id="nav">
     <div class="nav-inner">
       <a href="#/home" data-route="home" class="active">首页</a>
-      <a href="#/news" data-route="news">高考资讯</a>
-      <a href="#/xk" data-route="xk">新高考选科</a>
-      <a href="#/zhineng" data-route="zhineng">填志愿</a>
-      <a href="#/ketang" data-route="ketang">课堂</a>
+      <div class="nv-item">
+        <a href="#/news" data-route="news">高考资讯<span class="nav-caret"></span></a>
+        <div class="nav-drop">
+          <a href="#/news">高考动态</a>
+          <a href="#/news/zc">招生政策</a>
+          <a href="#/zd">招生动态</a>
+          <a href="#/zk">高职招生</a>
+          <a href="#/jc">军警招生</a>
+          <a href="#/guide">填报指南</a>
+        </div>
+      </div>
+      <div class="nv-item">
+        <a href="#/xk" data-route="xk">新高考选科<span class="nav-caret"></span></a>
+        <div class="nav-drop">
+          <a href="#/xk">选科自查</a>
+          <a href="#/xk/quiz">学科专业倾向测评</a>
+          <a href="#/xk/req">高校专业选科要求</a>
+          <a href="#/xk/field">重点领域专业需求</a>
+        </div>
+      </div>
+      <div class="nv-item">
+        <a href="#/zhineng" data-route="zhineng">填志愿<span class="nav-caret"></span></a>
+        <div class="nav-drop mega">
+          <div class="mega-col">
+            <h5>查</h5>
+            <a href="#/schools">找大学</a>
+            <a href="#/majors">查专业</a>
+            <a href="#/zhineng/career">看职业</a>
+            <a href="#/lines">分数线 · 批次线</a>
+          </div>
+          <div class="mega-col">
+            <h5>测</h5>
+            <a href="#/ce">测评中心</a>
+            <a href="#/zhineng/quiz">专业倾向测评</a>
+            <a href="#/zhineng/shengya">生涯发展测评</a>
+          </div>
+          <div class="mega-col">
+            <h5>填</h5>
+            <a href="#/zhineng">智能填报冲稳保</a>
+            <a href="#/zhineng/report">我的志愿报告</a>
+            <a href="#/zhineng/baokao">报考指南</a>
+            <a href="#/vip">VIP 会员</a>
+          </div>
+        </div>
+      </div>
+      <div class="nv-item">
+        <a href="#/ketang" data-route="ketang">课堂<span class="nav-caret"></span></a>
+        <div class="nav-drop">
+          <a href="#/ketang">课程与讲堂</a>
+          <a href="#/live">高招直播</a>
+        </div>
+      </div>
       <a href="#/jigou" data-route="jigou">机构</a>
       <a href="#/yanbao" data-route="yanbao">研究报告</a>
       <a href="#/yidu" data-route="yidu">易度排名</a>
     </div>
   </nav>
 </header>
+
+<!-- 右侧悬浮侧栏（优志愿式） -->
+<div class="side-widgets">
+  <a class="sw-btn" href="download.html" target="_blank" rel="noopener" title="下载手机APP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>APP</a>
+  <a class="sw-btn" href="#/vip" title="会员权益"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 16.9 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"/></svg>VIP</a>
+  <a class="sw-btn" href="#/guide" title="帮助中心"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.4 2.3c-.8.35-.9 1-.9 1.7"/><path d="M12 16.5h.01"/></svg>帮助</a>
+  <button class="sw-btn sw-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 19V5"/><path d="M5.5 11.5 12 5l6.5 6.5"/></svg>顶部</button>
+</div>
 
 <!-- 成绩悬浮条 -->
 <div class="score-float" id="scoreChip" type="button" data-act="goto" data-arg="zhineng" role="button" tabindex="0">
@@ -5788,25 +5914,29 @@ window.GK_LEARN = {
       '<span>已保存：' + kindShort() + ' ' + (st.score ? st.score + ' 分 · ' : '') + (isArt() ? '综合分' : '位次 <b class="num">' + nf(st.rank) + '</b>') + '</span></div>' : '';
 
     var html = '' +
-      '<section class="hero-v2">' +
-        '<div class="hero-grid">' +
-          '<div class="hero-left">' +
-            '<span class="hero-pill"><i></i>黑龙江省招生考试院 ' + yearRange() + ' 年官方投档数据 · 本科 / 专科 / 提前批 / 艺术类</span>' +
-            '<h1>龙高考<br>让每一分都<em>用在刀刃上</em></h1>' +
-            '<p>找大学、查专业、看分数线、测录取概率。输入分数，系统按全省一分一段表换算位次，用 <b>' + nf(yearStat().groups) + '</b> 个院校专业组真实投档数据（' + dataYear() + ' 年）为你生成冲、稳、保 40 个平行志愿方案。普通类与艺术类全批次覆盖。</p>' +
-            '<div class="hero-actions">' +
-              '<button class="btn btn-gold btn-lg" type="button" data-act="goto" data-arg="zhineng">' + ICON.spark + '免费开始龙高考填报</button>' +
-              '<button class="btn btn-ghost btn-lg" type="button" data-act="goto" data-arg="vip" style="background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff">' + ICON.crown + '开通 VIP 解锁全部</button>' +
+      '<section class="home-hero">' +
+          '<div class="hh-banner">' +
+            '<div class="hh-slide hh-s1">' +
+              '<span class="hh-pill">黑龙江省招生考试院 ' + yearRange() + ' 年官方投档数据</span>' +
+              '<h2>龙高考<br>让每一分都<em>用在刀刃上</em></h2>' +
+              '<p><b>' + nf(META.groupCount) + '</b> 个院校专业组真实投档数据 · 冲稳保 40 个平行志愿方案 · 普通类与艺术类全批次覆盖</p>' +
+              '<button class="btn btn-lg hh-btn" type="button" data-act="goto" data-arg="zhineng">' + ICON.spark + '免费开始龙高考填报</button>' +
             '</div>' +
-            '<div class="hero-metrics">' +
-              '<div><b class="num">' + nf(META.schoolCount) + '</b><span>覆盖院校</span></div>' +
-              '<div><b class="num">' + nf(META.groupCount) + '</b><span>院校专业组</span></div>' +
-              '<div><b>40</b><span>平行志愿容量</span></div>' +
-              '<div><b>' + dataYear() + '</b><span>官方数据年份</span></div>' +
+            '<div class="hh-slide hh-s2">' +
+              '<span class="hh-pill">智能填报引擎</span>' +
+              '<h2>输入分数 · 自动换算位次<br><em>10 秒生成志愿方案</em></h2>' +
+              '<p>依据 ' + dataYear() + ' 年一分一段表与院校专业组投档线，按位次生成冲、稳、保三档梯度</p>' +
+              '<button class="btn btn-gold btn-lg" type="button" data-act="goto" data-arg="zhineng">' + ICON.spark + '立即模拟填报</button>' +
+            '</div>' +
+            '<div class="hh-slide hh-s3">' +
+              '<span class="hh-pill">全部功能永久免费</span>' +
+              '<h2>找大学 · 查专业 · 分数线<br><em>一分一段 · 软科排名</em></h2>' +
+              '<p>不收费、不卖卡，只做黑龙江学子自己的高考志愿填报平台</p>' +
+              '<button class="btn btn-lg hh-btn" type="button" data-act="goto" data-arg="schools">' + ICON.cap + '开始找大学</button>' +
             '</div>' +
           '</div>' +
           '<div class="fill-card">' +
-            '<h2>模拟填报 · 快速定位 ' + (isVIP() ? '' : '<span class="fc-vip">注册送3天VIP</span>') + '</h2>' +
+            '<h2>2027 志愿模拟填报 <span class="fc-prov">黑龙江</span>' + (isVIP() ? '' : '<span class="fc-vip">注册送3天VIP</span>') + '</h2>' +
             '<p class="sub">输入分数或位次，10 秒生成志愿方案</p>' +
             batchSeg() +
             kindSeg() +
@@ -5814,8 +5944,7 @@ window.GK_LEARN = {
             '<div style="margin-top:16px"><button class="btn btn-primary btn-lg btn-block" type="button" data-act="calc">' + ICON.spark + '生成我的志愿方案</button></div>' +
             '<div id="homeSaved">' + filled + '</div>' +
           '</div>' +
-        '</div>' +
-      '</section>' +
+        '</section>' +
 
       // 快讯滚动条（优志愿风格）
       '<div class="notice-bar">' +
@@ -5849,15 +5978,38 @@ window.GK_LEARN = {
         '<div class="ns-item"><div class="ns-num">40<small>个</small></div><span>平行志愿一键编排<br>冲稳保三档梯度</span></div>' +
       '</div>' +
 
-      // 课堂：课程 + 讲堂（优志愿版面）
+      // 讲堂 + 热播院校（优志愿版面：左讲堂 / 右热播院校+专题）
       '<div class="home-cols">' +
         '<div class="panel-card">' +
-          '<div class="panel-hd"><h3>' + ICON.book + '课程</h3><a data-act="goto" data-arg="ketang" href="javascript:void(0)">全部课程 ' + ICON.arrow + '</a></div>' +
+          '<div class="panel-hd"><h3>' + ICON.play + '讲堂</h3><a data-act="goto" data-arg="ketang" href="javascript:void(0)">全部讲堂 ' + ICON.arrow + '</a></div>' +
           '<div class="kc-grid kc-grid-sm">' + LRN.courses.slice(0, 6).map(courseCard).join('') + '</div>' +
         '</div>' +
         '<div class="panel-card">' +
-          '<div class="panel-hd"><h3>' + ICON.play + '讲堂</h3><a data-act="goto" data-arg="ketang" href="javascript:void(0)">全部讲堂 ' + ICON.arrow + '</a></div>' +
-          '<div class="ls-grid ls-grid-sm">' + LRN.lessons.slice(0, 5).map(lessonCard).join('') + '</div>' +
+          '<div class="panel-hd"><h3>' + ICON.star + '热播院校</h3>' +
+            '<div class="hs-seg">' +
+              '<button type="button" class="' + (hv.tab === 'ben' ? 'on' : '') + '" data-act="hstab" data-arg="ben">本科</button>' +
+              '<button type="button" class="' + (hv.tab === 'zk' ? 'on' : '') + '" data-act="hstab" data-arg="zk">专科</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="hs-list hs-compact">' +
+            hotSchoolList(hv.tab !== 'zk').slice(0, 8).map(function (x, idx) {
+              return '<div class="hs-row" data-act="openSchool" data-arg="' + x.g[0] + '">' +
+                '<span class="hs-no' + (idx < 3 ? ' t' + (idx + 1) : '') + '">' + (idx + 1) + '</span>' +
+                '<div class="hs-name">' + esc(x.s[0]) + lvBadge(x.s) + (x.s[2] === '黑龙江' ? '<span class="badge local">省内</span>' : '') + '</div>' +
+                '<div class="hs-heat">投档分 <b class="num">' + x.g[4] + '</b></div>' +
+              '</div>';
+            }).join('') +
+          '</div>' +
+          '<div class="panel-hd hs-sub-hd"><h3>' + ICON.book + '政策专题</h3><a data-act="goto" data-arg="news/zc" href="javascript:void(0)">更多 ' + ICON.arrow + '</a></div>' +
+          '<div class="hs-list hs-compact">' +
+            (SUB.policy || []).slice(0, 6).map(function (p) {
+              return '<div class="hs-row" data-act="news" data-arg="' + esc(p.t) + '">' +
+                '<span class="hs-no" style="background:var(--brand-soft);color:var(--brand)">策</span>' +
+                '<div class="hs-name" style="font-weight:500;font-size:13px">' + esc(p.t) + '</div>' +
+                '<div class="hs-heat" style="color:var(--ink-4)">' + esc(p.tag) + '</div>' +
+              '</div>';
+            }).join('') +
+          '</div>' +
         '</div>' +
       '</div>' +
 
@@ -5867,19 +6019,10 @@ window.GK_LEARN = {
         '<div class="lv-grid">' + LRN.lives.slice(0, 4).map(liveCard).join('') + '</div>' +
       '</div>' +
 
-      // 热门专业 + 资讯
-      '<div class="home-cols">' +
-        '<div class="panel-card">' +
-          '<div class="panel-hd"><h3>热门专业解读</h3><a data-act="goto" data-arg="majors" href="javascript:void(0)">全部专业 ' + ICON.arrow + '</a></div>' +
-          YZ.majors.slice(0, 8).map(function (m) {
-            return '<div class="hm-major" data-act="mjrow" data-arg="' + esc(m.n) + '">' +
-              '<div class="hm-mn"><b>' + esc(m.n) + '</b><span>' + esc(m.k || '') + '</span></div>' +
-              '<span class="hm-tag">' + esc(m.c) + ' · ' + esc(m.y) + '</span>' +
-            '</div>';
-          }).join('') +
-        '</div>' +
-        '<div class="panel-card">' +
-          '<div class="panel-hd"><h3>高考资讯</h3><a data-act="goto" data-arg="news" href="javascript:void(0)">更多资讯 ' + ICON.arrow + '</a></div>' +
+      // 高考资讯（优志愿版面：全宽列表）
+      '<div class="panel-card">' +
+        '<div class="panel-hd"><h3>高考资讯</h3><a data-act="goto" data-arg="news" href="javascript:void(0)">更多资讯 ' + ICON.arrow + '</a></div>' +
+        '<div class="news-list-full">' +
           newsAll().slice(0, 6).map(function (n) {
             return '<div class="news-item" data-act="news" data-arg="' + esc(n.t) + '">' +
               '<h4>' + esc(n.t) + '</h4>' +
@@ -5889,33 +6032,17 @@ window.GK_LEARN = {
         '</div>' +
       '</div>' +
 
-      // 热播院校榜（本科 / 专科，优志愿版面置于资讯下方）
-      '<div class="hot-schools">' +
-        '<div class="hs-hd">' +
-          '<h3>' + ICON.star + '热播院校 <i style="font-size:12px;color:var(--ink-4);font-style:normal;font-weight:400">' + dataYear() + ' 年 · ' + kindShort() + ' · 按投档分</i></h3>' +
-          '<div class="hs-seg">' +
-            '<button type="button" class="' + (hv.tab === 'ben' ? 'on' : '') + '" data-act="hstab" data-arg="ben">本科</button>' +
-            '<button type="button" class="' + (hv.tab === 'zk' ? 'on' : '') + '" data-act="hstab" data-arg="zk">专科</button>' +
-          '</div>' +
+      // 热门专业解读（优志愿版面：全宽两列）
+      '<div class="panel-card">' +
+        '<div class="panel-hd"><h3>热门专业解读</h3><a data-act="goto" data-arg="majors" href="javascript:void(0)">全部专业 ' + ICON.arrow + '</a></div>' +
+        '<div class="mp-grid">' +
+          YZ.majors.slice(0, 8).map(function (m) {
+            return '<div class="hm-major" data-act="mjrow" data-arg="' + esc(m.n) + '">' +
+              '<div class="hm-mn"><b>' + esc(m.n) + '</b><span>' + esc(m.k || '') + '</span></div>' +
+              '<span class="hm-tag">' + esc(m.c) + ' · ' + esc(m.y) + '</span>' +
+            '</div>';
+          }).join('') +
         '</div>' +
-        '<div class="hs-cols"><div><div class="hs-list">' +
-          hotSchoolList(hv.tab !== 'zk').map(function (x, idx) {
-            return '<div class="hs-row" data-act="openSchool" data-arg="' + x.g[0] + '">' +
-              '<span class="hs-no' + (idx < 3 ? ' t' + (idx + 1) : '') + '">' + (idx + 1) + '</span>' +
-              '<div class="hs-name">' + esc(x.s[0]) + lvBadge(x.s) + (x.s[2] === '黑龙江' ? '<span class="badge local">省内</span>' : '') + '</div>' +
-              '<div class="hs-heat">投档分 <b class="num">' + x.g[4] + '</b></div>' +
-            '</div>';
-          }).join('') +
-        '</div></div>' +
-        '<div><div class="hs-list" style="padding-left:26px">' +
-          (SUB.policy || []).slice(0, 8).map(function (p) {
-            return '<div class="hs-row" data-act="news" data-arg="' + esc(p.t) + '">' +
-              '<span class="hs-no" style="background:var(--brand-soft);color:var(--brand)">策</span>' +
-              '<div class="hs-name" style="font-weight:500;font-size:13px">' + esc(p.t) + '</div>' +
-              '<div class="hs-heat" style="color:var(--ink-4)">' + esc(p.tag) + '</div>' +
-            '</div>';
-          }).join('') +
-        '</div></div></div>' +
       '</div>' +
 
       // VIP 横幅
@@ -10043,7 +10170,7 @@ window.GK_LEARN = {
     '</div>' +
     '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">' +
       '<button type="button" data-a2hs="never" style="border:0;background:transparent;color:#8b94a3;font-size:12px;padding:6px 0;cursor:pointer">不再提示</button>' +
-      '<button type="button" data-a2hs="close" style="border:0;background:#2b62f0;color:#fff;font-size:13.5px;font-weight:600;padding:9px 22px;border-radius:999px;cursor:pointer">知道了</button>' +
+      '<button type="button" data-a2hs="close" style="border:0;background:#e8353f;color:#fff;font-size:13.5px;font-weight:600;padding:9px 22px;border-radius:999px;cursor:pointer">知道了</button>' +
     '</div>';
 
   document.body.appendChild(box);
