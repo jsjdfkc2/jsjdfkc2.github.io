@@ -1,11 +1,11 @@
-/* 龙志愿 Service Worker
+/* 龙高考 Service Worker
    策略：
    - 页面导航：网络优先，离线回退缓存（保证内容始终最新，断网也能开）
    - 静态资源：缓存优先
    - 跨域请求（CDN SDK 等）：不接管，交给浏览器
    发布新版本时只需改 VERSION。
 */
-var VERSION = 'lgb-2026-11-11-b';
+var VERSION = 'lgk-2026-11-12-a';
 var CORE = [
   '/',
   '/index.html',
