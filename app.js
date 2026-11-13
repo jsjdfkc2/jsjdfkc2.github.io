@@ -1281,6 +1281,12 @@
   var CAT = window.GK_MAJORS || { menlei: [], classes: [], rows: [], meta: {} };
   var PROF = {};
   YZ.majors.forEach(function (m) { PROF[m.n] = m; });
+  /* 深度解读扩展包（majors-detail.js）：薪酬参考/考研方向/报考提示，合入专业库 */
+  if (window.YZ_DETAIL && window.YZ_DETAIL.majors) {
+    window.YZ_DETAIL.majors.forEach(function (m) {
+      if (!PROF[m.n]) { YZ.majors.push(m); PROF[m.n] = m; }
+    });
+  }
 
   function catOf(r) { return { ml: CAT.menlei[r[3]] || '', cls: CAT.classes[r[4]] || '' }; }
   function catTotal() { return (CAT.meta && CAT.meta.total) || CAT.rows.length; }
@@ -1578,6 +1584,7 @@
         '<div class="mc-row">' + esc(m.d) + '</div>' +
         '<div class="mc-row mr"><b>核心课程</b><span>' + esc(m.k) + '</span></div>' +
         '<div class="mc-row mr"><b>就业方向</b><span>' + esc(m.j) + '</span></div>' +
+        (m.pay ? '<div class="mc-row mr"><b>薪酬参考</b><span>' + esc(m.pay) + '</span></div>' : '') +
         '<div class="mc-schools"><span class="lbl">省内推荐院校</span>' +
           m.s.map(function (s) { return '<span class="ms">' + esc(s) + '</span>'; }).join('') +
         '</div>' +
@@ -1604,8 +1611,12 @@
       ? '<div class="mj-sec"><h4>专业解读</h4><p>' + esc(p.d) + '</p></div>' +
         '<div class="mj-sec"><h4>核心课程</h4><p>' + esc(p.k) + '</p></div>' +
         '<div class="mj-sec"><h4>就业方向</h4><p>' + esc(p.j) + '</p></div>' +
+        (p.pay ? '<div class="mj-sec"><h4>薪酬参考</h4><p>' + esc(p.pay) + '</p></div>' : '') +
+        (p.pg ? '<div class="mj-sec"><h4>考研方向</h4><p>' + esc(p.pg) + '</p></div>' : '') +
+        (p.tip ? '<div class="mj-sec"><h4>报考提示</h4><p>' + esc(p.tip) + '</p></div>' : '') +
         '<div class="mj-sec"><h4>省内推荐院校</h4><div class="mj-schools">' +
-          p.s.map(function (s) { return '<span class="ms">' + esc(s) + '</span>'; }).join('') + '</div></div>'
+          p.s.map(function (s) { return '<span class="ms">' + esc(s) + '</span>'; }).join('') + '</div></div>' +
+        (p.pay || p.tip ? '<div class="tip info" style="margin-top:12px">' + ICON.info + '<div>薪酬与提示为公开招聘信息的综合参考，因城市、院校与个人能力差异较大，请结合院校招生章程与就业质量报告核实。</div></div>' : '')
       : '<div class="tip info" style="margin-top:14px">' + ICON.info + '<div>该专业暂无深度解读。院校投档线以「院校专业组」为单位公布，不区分组内专业，可在 <a href="#/schools" style="color:var(--brand);text-decoration:underline">找大学</a> 中按投档分筛选。</div></div>';
 
     showModal(
