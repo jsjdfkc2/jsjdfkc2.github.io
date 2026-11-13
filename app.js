@@ -1284,7 +1284,13 @@
   /* 深度解读扩展包（majors-detail.js）：薪酬参考/考研方向/报考提示，合入专业库 */
   if (window.YZ_DETAIL && window.YZ_DETAIL.majors) {
     window.YZ_DETAIL.majors.forEach(function (m) {
-      if (!PROF[m.n]) { YZ.majors.push(m); PROF[m.n] = m; }
+      var ex = PROF[m.n];
+      if (ex) {
+        /* 第二批起支持对已有专业做增量增强：仅补充缺失字段（pay/pg/tip 等），不覆盖原文 */
+        ['c', 'y', 'd', 'k', 'j', 's', 'pay', 'pg', 'tip'].forEach(function (f) {
+          if (m[f] !== undefined && ex[f] === undefined) ex[f] = m[f];
+        });
+      } else { YZ.majors.push(m); PROF[m.n] = m; }
     });
   }
 
@@ -1585,7 +1591,7 @@
         '<div class="mc-row mr"><b>核心课程</b><span>' + esc(m.k) + '</span></div>' +
         '<div class="mc-row mr"><b>就业方向</b><span>' + esc(m.j) + '</span></div>' +
         (m.pay ? '<div class="mc-row mr"><b>薪酬参考</b><span>' + esc(m.pay) + '</span></div>' : '') +
-        '<div class="mc-schools"><span class="lbl">省内推荐院校</span>' +
+        '<div class="mc-schools"><span class="lbl">' + esc(m.sl || '省内推荐院校') + '</span>' +
           m.s.map(function (s) { return '<span class="ms">' + esc(s) + '</span>'; }).join('') +
         '</div>' +
       '</div>';
@@ -1614,7 +1620,7 @@
         (p.pay ? '<div class="mj-sec"><h4>薪酬参考</h4><p>' + esc(p.pay) + '</p></div>' : '') +
         (p.pg ? '<div class="mj-sec"><h4>考研方向</h4><p>' + esc(p.pg) + '</p></div>' : '') +
         (p.tip ? '<div class="mj-sec"><h4>报考提示</h4><p>' + esc(p.tip) + '</p></div>' : '') +
-        '<div class="mj-sec"><h4>省内推荐院校</h4><div class="mj-schools">' +
+        '<div class="mj-sec"><h4>' + esc(p.sl || '省内推荐院校') + '</h4><div class="mj-schools">' +
           p.s.map(function (s) { return '<span class="ms">' + esc(s) + '</span>'; }).join('') + '</div></div>' +
         (p.pay || p.tip ? '<div class="tip info" style="margin-top:12px">' + ICON.info + '<div>薪酬与提示为公开招聘信息的综合参考，因城市、院校与个人能力差异较大，请结合院校招生章程与就业质量报告核实。</div></div>' : '')
       : '<div class="tip info" style="margin-top:14px">' + ICON.info + '<div>该专业暂无深度解读。院校投档线以「院校专业组」为单位公布，不区分组内专业，可在 <a href="#/schools" style="color:var(--brand);text-decoration:underline">找大学</a> 中按投档分筛选。</div></div>';
@@ -1756,8 +1762,9 @@
       '<span>点击查看代码、所属专业类与同专业类其他专业</span></div>';
     var thead = '<div class="mj-head zk-mhead"><span>专业名称</span><span>专业类</span><span>专业大类</span><span>代码</span></div>';
     var body = rows.map(function (r) {
+      var zd = window.ZK_DETAIL && window.ZK_DETAIL[r[0]];
       return '<button type="button" class="mj-row zk-mrow" data-act="zkrow" data-arg="' + esc(r[0]) + '">' +
-        '<span class="mj-name">' + esc(r[1]) + '</span>' +
+        '<span class="mj-name">' + esc(r[1]) + (zd ? ' <i class="mj-has">解读</i>' : '') + '</span>' +
         '<span class="mj-cls">' + esc(zkClsOf(r)) + '</span>' +
         '<span class="mj-deg">' + esc(zkCats()[r[2]] || '') + '</span>' +
         '<span class="mj-code num">' + esc(r[0]) + '</span>' +
@@ -1809,6 +1816,20 @@
       return '<div><span>' + x[0] + '</span><b' + (x[0] === '专业代码' ? ' class="num"' : '') + '>' + esc(x[1]) + '</b></div>';
     }).join('');
 
+    /* 专科深度解读（zk-detail.js）：d/k/j/pay/zb/tip/s */
+    var zd = window.ZK_DETAIL && window.ZK_DETAIL[r[0]];
+    var deepZk = zd
+      ? '<div class="mj-sec"><h4>专业解读</h4><p>' + esc(zd.d) + '</p></div>' +
+        '<div class="mj-sec"><h4>核心课程</h4><p>' + esc(zd.k) + '</p></div>' +
+        '<div class="mj-sec"><h4>就业方向</h4><p>' + esc(zd.j) + '</p></div>' +
+        '<div class="mj-sec"><h4>薪酬参考</h4><p>' + esc(zd.pay) + '</p></div>' +
+        '<div class="mj-sec"><h4>专升本方向</h4><p>' + esc(zd.zb) + '</p></div>' +
+        '<div class="mj-sec"><h4>报考提示</h4><p>' + esc(zd.tip) + '</p></div>' +
+        '<div class="mj-sec"><h4>省内推荐高职院校</h4><div class="mj-schools">' +
+          zd.s.map(function (x) { return '<span class="ms">' + esc(x) + '</span>'; }).join('') + '</div></div>' +
+        '<div class="tip info" style="margin-top:12px">' + ICON.info + '<div>薪酬、专升本与院校信息为公开招聘与招生数据的综合参考，因城市、院校与个人能力差异较大，请结合当年招生计划与院校就业质量报告核实。</div></div>'
+      : '';
+
     showModal(
       '<div class="modal-head"><div class="top"><div>' +
         '<h3>' + esc(r[1]) + '</h3>' +
@@ -1816,6 +1837,7 @@
         '</div><button class="modal-close" type="button" data-act="close" aria-label="关闭">' + ICON.close + '</button></div></div>' +
       '<div class="modal-body">' +
         '<div class="mj-grid">' + info + '</div>' +
+        deepZk +
         '<div class="mj-sec"><h4>同专业类其他专业 <i class="rk-src">' + esc(cls) + ' · 共 ' + (sibs.length + 1) + ' 个</i></h4>' +
           '<div class="rk-mjs">' + sibs.map(function (x) {
             return '<button type="button" class="rk-mj" data-act="zkrow" data-arg="' + esc(x[0]) + '">' + esc(x[1]) + '<em>' + esc(x[0]) + '</em></button>';
