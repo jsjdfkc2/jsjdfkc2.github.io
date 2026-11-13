@@ -11,7 +11,7 @@
   "display_override": ["standalone", "minimal-ui", "browser"],
   "orientation": "portrait",
   "background_color": "#f4f6fa",
-  "theme_color": "#2b62f0",
+  "theme_color": "#e8353f",
   "categories": ["education", "reference"],
   "icons": [
     {

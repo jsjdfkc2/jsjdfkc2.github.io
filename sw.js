@@ -5,10 +5,21 @@
    - 跨域请求（CDN SDK 等）：不接管，交给浏览器
    发布新版本时只需改 VERSION。
 */
-var VERSION = 'lgk-2026-11-12-d';
+var VERSION = 'lgk-2026-11-12-f';
 var CORE = [
   '/',
   '/index.html',
+  '/gk-data.js',
+  '/majors.js',
+  '/majors-catalog.js',
+  '/jiancha.js',
+  '/ruanke.js',
+  '/zk.js',
+  '/news.js',
+  '/sub.js',
+  '/learn.js',
+  '/cloud.js',
+  '/app.js',
   '/download.html',
   '/manifest.json',
   '/apple-touch-icon.png',
